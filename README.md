@@ -6,25 +6,25 @@ This is the code repo for all our NationBuilder tutorials. Check out the step-by
 
 [Step-by-step Tutorial](https://medium.com/@codenation/video-gallery-on-nationbuilder-websites-4bb7c04e82e4#.pwkh8z1u8)
 
-[live example](http://learn.codenation.com/video_gallery)
+[Live example](http://learn.codenation.com/video_gallery)
 
 ###How to include feature videos in your NationBuilder feature slider
 
 [Step-by-step Tutorial](https://medium.com/@codenation/how-to-include-a-feature-video-in-your-nationbuilder-feature-slider-4fc9852a2322#.w1zzln10i)
 
-[live example](http://learn.codenation.com/feature_video)
+[Live example](http://learn.codenation.com/feature_video)
 
 ###Filter blog posts on NationBuilder websites
 
 [Step-by-step Tutorial](https://medium.com/@codenation/filter-blog-posts-on-nationbuilder-websites-9fcc8514a61b#.b8feh9frr)
 
-[live example](http://learn.codenation.com/blog)
+[Live example](http://learn.codenation.com/blog)
 
 ###Bootstrap staged donation pages on NationBuilder websites
 
 [Step-by-step Tutorial](https://medium.com/@codenation/bootstrap-with-staged-donations-4c98de5adb47#.8hynfdqvk)
 
-[live example](learn.codenation.com/donate)
+[Live example](learn.codenation.com/donate)
 
 ###Add Next and Previous links to blog posts on your NationBuilder site
 
