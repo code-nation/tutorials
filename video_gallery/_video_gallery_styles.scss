@@ -1,0 +1,31 @@
+h1, h2, h3, h4{
+  letter-spacing: 1px;
+}
+// Video Gallery and Featured Videos
+.video-gallery{
+  img {
+    width: 100%;
+  }
+  h1{
+    margin-bottom: 20px;
+    margin-top: 0;
+    text-transform: uppercase;
+    border-bottom: solid 1px #085a4e;
+    padding-bottom: 5px;
+  }
+  h4{
+    margin: 0;
+    border-left: #07daba solid 4px;
+    background: #222222;
+    padding: 10px 0;
+    color: #07daba;
+    text-transform: uppercase;
+  }
+}
+.fade_play{
+  background: url('videoplay.png') center center no-repeat;
+  position: absolute;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
