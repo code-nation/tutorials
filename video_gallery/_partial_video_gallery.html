@@ -1,6 +1,7 @@
 <div id="video_gallery" class="video-gallery">
   {% assign video_number = 1 %}
-  {% for child in page.children %}
+  {% assign ordered_children = page.children | sort:'published_at' | reverse %}
+  {% for child in ordered_children %}
   {% assign child_content_escaped = child.basic.content | escape %}
   {% capture video_id %}{{ child.basic.content | escape | split:'www.youtube.com%2Fembed%2F' | last | split:'%3Fwmode' | first }}{% endcapture %}
   {% if video_id.size > 0 and child_content_escaped contains "www.youtube.com%2Fembed%2F" %}
