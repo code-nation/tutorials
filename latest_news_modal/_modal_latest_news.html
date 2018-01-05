@@ -1,0 +1,62 @@
+<div id="modal-latest-news">
+  <div id="btn-close-modal" class="close-modal-latest-news padtopmore padbottommore">
+    <img src="close.png" class="close-x">
+  </div>
+  <div class="container padtopmore">
+    {% assign post_number = 1 %}
+    {% for post in site.most_recent_blog_post_pages limit:9 %}
+    {% if post_number == 1 %}
+    <div class="row news">
+    {% endif %}
+      <div class="col-md-4 center {% if post_number == 1 or post_number == 2 %}border-right{% endif %}">
+        <div class="post-content">
+          {% if post.has_meta_image? %}
+            <img src="{{ post.meta_image_url }}" alt="{{ post.headline }}" />
+          {% endif %}
+          {% if post.headline.size > 0 %}
+          <h3>{{ post.headline }}</h3>
+          {% endif %}
+          <div class="padtop padbottom">
+            {% if post.has_meta_image? %}
+              {{ post.blog_post.content | strip_html | truncatewords:25 }}
+            {% else %}
+              {{ post.blog_post.content | strip_html | truncatewords:70 }}
+            {% endif %}
+          </div>
+          <div class="padtop padbottom">
+            <a class="btn btn-primary" href='{{ post.url }}'>Read More</a>
+          </div>
+        </div>
+      </div>
+    {% if post_number == 3 or forloop.last %}
+    </div>
+    {% assign post_number = 1 %}
+    {% else %}
+    {% assign post_number = post_number | plus:1 %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+<style type="text/css">
+  .news {
+    padding-bottom: 60px;
+  }
+  .post-content {
+    margin-bottom: 20px;
+  }
+  .post-content img {
+    border-radius: 100%;
+    max-width: 50%;
+  }
+  .border-right {
+    border-right: solid 2px #f1f1f1;
+  }
+</style>
+<script type="text/javascript" src="animatedModal.min.js"></script>
+<script type="text/javascript">
+  $("#latest-news-button").animatedModal({
+    modalTarget: 'modal-latest-news',
+    animatedIn: 'bounceInDown',
+    animatedOut: 'bounceOutDown'
+  });
+</script>
