@@ -1,0 +1,61 @@
+$theme_color1: #07daba;
+$theme_color2: #085a4e;
+
+body{
+  font-family: "proxima-nova",sans-serif;
+}
+h1, h2, h3, h4{
+  letter-spacing: 1px;
+}
+h1{
+  margin-top: 0;
+}
+//Buttons
+.btn-blue { 
+  background: $theme_color1;
+  font-weight: 800;
+  text-transform: uppercase;
+  @include transition(.3s ease-in-out);
+  text-decoration: none;
+  border-color: transparent;
+  color: $theme_color2;
+  letter-spacing: 1px;
+  &:hover{
+    background: darken($theme_color1, 10%);
+    border-color: transparent;
+    color:$theme_color2;
+  }
+}
+//Blog
+body.page-type-blog{
+  background: #222;
+  color: #fff;
+  .mix {
+    display: none;
+  }
+  #blog-principal{
+    .text{
+      padding: 50px;
+    }
+  }
+  h1 a{
+    color: $theme_color1;
+    @include transition(.3s ease-in-out);
+    &:hover{
+      text-decoration: none;
+      color: darken($theme_color1, 10);
+    }
+  }
+  .byline{
+    font-size: 23px;
+    span.linked-signup-name{
+      color: $theme_color1;
+    }
+  }
+  hr{
+    border-top: 2px solid $theme_color1;
+  }
+  .blog{
+    padding: 50px 0;
+  }
+}
