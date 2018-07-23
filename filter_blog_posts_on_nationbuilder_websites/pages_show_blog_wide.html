@@ -1,0 +1,81 @@
+<div id="mixitupblog" class="clearfix">
+  {% if page.headline.size > 0 %}
+  <h1 class="center padbottommore padtopmore">{{ page.headline }}</h1>
+  {% endif %}
+
+  {% assign list_of_tags = "" %}
+  {% for post in page.blog.most_recent_blog_posts %}
+    {% for tag in post.tags %}
+      {% capture tag_variables %}{{ tag.name }}##{{ tag.slug }}##{{ tag.id }}##{{ tag.count }}{% endcapture %}
+      {% assign list_of_tags = tag_variables | append:'***' | append:list_of_tags %}
+    {% endfor %}
+  {% endfor %}
+  {% assign array_of_tags = list_of_tags | split:'***' | sort | uniq %}
+  <div class="filters_buttons">
+    <h3 class="center padbottommore">FILTERED BY:</h3>
+    <div class="center">
+      <button class="filter submit-button btn-blue btn" data-filter="all">All</button>
+      {% for tag in array_of_tags %}
+			{% assign tag_variable = tag | split:'##' %}
+      <button class="filter submit-button btn-blue btn" data-filter=".{{ tag_variable[1] }}">{{ tag_variable[0] }} ({{ tag_variable[3] }})</button>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div id="mix_it_up_posts" class="margintop blog">
+    {% for post in page.blog.most_recent_blog_posts %}
+    {% assign post_tags_list = "" %}
+    {% for tag in post.tags %}
+    {% assign post_tags_list = tag.slug | append: " " | append: post_tags_list %}
+    {% endfor %}
+    <div class="mix {{ post_tags_list }}">
+      <div class="row row-fluid padtopless padbottomless">
+        {% assign thumbnail_url = "" %}
+        {% for adjunto in post.attachments %}
+        {% if adjunto.content_type contains "image" %}
+        {% assign thumbnail_url = adjunto.url %}
+        {% endif %}
+        {% endfor %}
+        {% if thumbnail_url.size > 0 %}
+        <div class="col-md-5 span5">
+          <div class="blog-img">
+            <a href="{{ post.url }}">
+              <img src="{{ thumbnail_url }}" />
+            </a>
+          </div>
+        </div>
+        {% endif %}
+        <div class="{% if thumbnail_url.size > 0 %}col-md-7 span7{% else %}col-md-12 span12{% endif %}">
+          <div class="page-excerpt padbottom" id="blog-post-page-{{ post.id }}">
+            <h1>
+              <a href="{{ post.url }}">
+                {{ post.headline }}
+              </a>
+            </h1>
+            <div class="byline">
+              Posted by {{ post.author.published_name_linked }} &middot; {{ post.published_at | date: '%B %d, %Y %l:%M %p' }}
+            </div>
+            <div class="excerpt hide">
+              {{ post.blog_post.content }}
+              {% if post.blog_post.is_extended? %}
+              <span class='read-more'><a href='{{ post.url }}'>Read more</a></span>
+              {% endif %}
+            </div>
+            <div>
+              <a href='{{ post.url }}' class="btn-blue btn btn-default submit-button">Read more</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr/>
+    </div>
+    {% endfor %}
+  </div>
+  {{ page.blog.most_recent_blog_posts | paginate prev_label: "&laquo;" next_label: "&raquo;" | replace:'<div class="pagination">','<nav class="pagination-container">' | replace:'<ul>','<ul class="pagination">' | replace:'</div>','</nav>' }}
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $('#mix_it_up_posts').mixItUp();
+  });
+</script>
