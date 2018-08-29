@@ -1,0 +1,85 @@
+// Desktop and tablet above 768px styles
+@media only screen and (min-width: $screen-sm-min) {
+
+	// Placeholder Text Styles
+	::-webkit-input-placeholder {
+		text-align:left;
+	}
+	:-moz-placeholder {
+		text-align:left;
+	}
+	::-moz-placeholder {
+		text-align:left;
+	}
+	:-ms-input-placeholder {
+		text-align:left;
+	}
+
+	// General Styles
+	input.text, textarea.textarea {
+		text-align:left;
+	}
+
+	// Main Container & Main
+	.main-container {
+		.main {
+			text-align:left;
+		}
+	}
+
+	// Section
+	section {
+		text-align:left;
+	}
+
+	// Panels, Forms, Containers
+	.panel-half-for-relative {
+		float:left;
+	  width:50%;
+	  &.panel-left {
+	  	padding:50px 70px 55px;
+	  }
+	  &.panel-right {
+	  	padding:50px 60px 55px;
+	  }
+	}
+
+	// Form Styles
+	.form-center {
+		::-webkit-input-placeholder {
+			text-align:center;
+		}
+		:-moz-placeholder {
+			text-align:center;
+		}
+		::-moz-placeholder {
+			text-align:center;
+		}
+		:-ms-input-placeholder {
+			text-align:center;
+		}
+		input.text, textarea.textarea {
+			text-align:center;
+		}
+	}
+
+	//---------------------------------------------------//
+
+	// Donation Page, Donation-v2 Page
+	body.page-type-donation, body.page-type-donation-v2 {
+		.panel-half-for-relative {
+		  &.panel-left {
+		  	width:59%;
+		  	padding:65px 80px 70px 65px;
+		  }
+		  &.panel-right {
+		  	width:41%;
+		  	padding:50px 55px 35px;
+		  }
+		}
+		.monthly-or-one-off-donation {
+			padding-top:37px;
+		}
+	}
+
+}//@media

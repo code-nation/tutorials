@@ -1,0 +1,753 @@
+// General Colour Examples
+$theme-color-1:rgba(36,37,40,1);//#242528//Dark Grey
+$theme-color-2:rgba(186,184,184,1);//#BAB8B8//Light Grey
+$theme-color-3:rgba(1,56,24,1);//#013818//Green Dark
+$theme-color-4:rgba(2,141,60,1);//#028D3C//Green Mid
+$theme-color-5:rgba(131,176,47,1);//#83B02F//Green Light
+$theme-color-6:rgba(181,197,11,1);//#B5C50B//Green Lemon
+$theme-color-7:rgba(224,213,204,1);//#E0D5CC//Cream
+
+// Background Size Mixin
+@mixin background-size($size) {
+	-webkit-background-size:$size;
+	   -moz-background-size:$size;
+	    -ms-background-size:$size;
+	     -o-background-size:$size;
+	        background-size:$size;
+}
+
+// Border Radius Mixin
+@mixin border-radius($radius) {
+	-webkit-border-radius:$radius;
+	   -moz-border-radius:$radius;
+	    -ms-border-radius:$radius;
+	     -o-border-radius:$radius;
+	        border-radius:$radius;
+}
+
+// Border Top Right Radius Mixin (Corner)
+@mixin border-top-right-radius($top-right-radius) {
+	-webkit-border-top-right-radius:$top-right-radius;
+	   -moz-border-top-right-radius:$top-right-radius;
+	    -ms-border-top-right-radius:$top-right-radius;
+	     -o-border-top-right-radius:$top-right-radius;
+	        border-top-right-radius:$top-right-radius;
+}
+
+// Border Top Left Radius Mixin (Corner)
+@mixin border-top-left-radius($top-left-radius) {
+	-webkit-border-top-left-radius:$top-left-radius;
+	   -moz-border-top-left-radius:$top-left-radius;
+	    -ms-border-top-left-radius:$top-left-radius;
+	     -o-border-top-left-radius:$top-left-radius;
+	        border-top-left-radius:$top-left-radius;
+}
+
+// Border Bottom Right Radius Mixin (Corner)
+@mixin border-bottom-right-radius($bottom-right-radius) {
+	-webkit-border-bottom-right-radius:$bottom-right-radius;
+	   -moz-border-bottom-right-radius:$bottom-right-radius;
+	    -ms-border-bottom-right-radius:$bottom-right-radius;
+	     -o-border-bottom-right-radius:$bottom-right-radius;
+	        border-bottom-right-radius:$bottom-right-radius;
+}
+
+// Border Bottom Left Radius Mixin (Corner)
+@mixin border-bottom-left-radius($bottom-left-radius) {
+	-webkit-border-bottom-left-radius:$bottom-left-radius;
+	   -moz-border-bottom-left-radius:$bottom-left-radius;
+	    -ms-border-bottom-left-radius:$bottom-left-radius;
+	     -o-border-bottom-left-radius:$bottom-left-radius;
+	        border-bottom-left-radius:$bottom-left-radius;
+}
+
+// Transform Mixin
+@mixin transform($transform) {
+	-webkit-transform:$transform;
+	   -moz-transform:$transform;
+	    -ms-transform:$transform;
+	     -o-transform:$transform;
+	        transform:$transform;
+}
+
+// Transition Mixin
+@mixin transition($transition...) {
+	-webkit-transition:$transition;
+	   -moz-transition:$transition;
+	    -ms-transition:$transition;
+	     -o-transition:$transition;
+	        transition:$transition;
+}
+
+// Transition Delay Mixin
+@mixin transition-delay($delay) {
+	-webkit-transition:$delay;
+	   -moz-transition:$delay;
+	    -ms-transition:$delay;
+	     -o-transition:$delay;
+	        transition:$delay;
+}
+
+// Filter Mixin
+@mixin filter($filter...) {
+	-webkit-filter:$filter;
+	   -moz-filter:$filter;
+	    -ms-filter:$filter;
+	     -o-filter:$filter;
+	        filter:$filter;
+}
+
+// Box Shadow Mixin
+@mixin box-shadow($box-shadow...) {
+	-webkit-box-shadow:$box-shadow;
+	   -moz-box-shadow:$box-shadow;
+	    -ms-box-shadow:$box-shadow;
+	     -o-box-shadow:$box-shadow;
+	        box-shadow:$box-shadow;
+}
+
+// Text Shadow Mixin
+@mixin text-shadow($text-shadow...) {
+	-webkit-text-shadow:$text-shadow;
+	   -moz-text-shadow:$text-shadow;
+	    -ms-text-shadow:$text-shadow;
+	     -o-text-shadow:$text-shadow;
+	        text-shadow:$text-shadow;
+}
+
+// Animation Mixin
+@mixin animation($animation...) {
+	-webkit-animation:$animation;
+	   -moz-animation:$animation;
+	    -ms-animation:$animation;
+	     -o-animation:$animation;
+	        animation:$animation;
+}
+
+// Placeholder Text Styles
+::-webkit-input-placeholder {
+	font-weight:lighter;
+	color:#333!important;
+	text-transform:uppercase;
+	text-align:center;
+}
+:-moz-placeholder {/* Firefox 18- */
+	font-weight:lighter;
+	color:#333!important;
+	text-transform:uppercase;
+	text-align:center;
+}
+::-moz-placeholder {/* Firefox 19+ */
+	font-weight:lighter;
+	color:#333!important;
+	text-transform:uppercase;
+	text-align:center;
+}
+:-ms-input-placeholder {
+	font-weight:lighter;
+	color:#333!important;
+	text-transform:uppercase;
+	text-align:center;
+}
+
+// General Styles
+main, div, section, article, label, h1, h2, h3, h4, h5, h6, p, strong, span, nav, ul, li, a, i {
+	&.white {
+		color:#FFF;
+	}
+	&.black {
+		color:#000;
+	}
+	&.dark-grey {
+		color:$theme-color-1;
+	}
+	&.light-grey {
+		color:$theme-color-2;
+	}
+	&.green-dark {
+		color:$theme-color-3;
+	}
+	&.green-mid {
+		color:$theme-color-4;
+	}
+	&.green-light {
+		color:$theme-color-5;
+	}
+	&.green-lemon {
+		color:$theme-color-6;
+	}
+	&.cream {
+		color:$theme-color-7;
+	}
+	&.uppercase {
+		text-transform:uppercase;
+	}
+	&.capitalize {
+		text-transform:capitalize;
+	}
+	&.lowercase {
+		text-transform:lowercase;
+	}
+	&.text-transform-none {
+		text-transform:none;
+	}
+	&.letter-space-0 {
+		letter-spacing:0;
+	}
+	&.letter-space-1 {
+		letter-spacing:1px;
+	}
+	&.letter-space-2 {
+		letter-spacing:2px;
+	}
+	&.letter-space-3 {
+		letter-spacing:3px;
+	}
+	&.bold {
+		font-weight:bold;
+	}
+	&.lighter {
+		font-weight:lighter;
+	}
+}
+a {
+	@include transition(all ease-out 0.2s);
+	&:hover, &:active, &:focus {
+		text-decoration:none;
+		outline:none;
+	}
+	&.white {
+		&:hover, &:active, &:focus {
+			color:#F1F1F1;
+		}
+	}
+	&.black {
+		&:hover, &:active, &:focus {
+			color:#333;
+		}
+	}
+	&.dark-grey {
+		&:hover, &:active, &:focus {
+			color:lighten($theme-color-1,10);
+		}
+	}
+	&.light-grey {
+		&:hover, &:active, &:focus {
+			color:darken($theme-color-2,10);
+		}
+	}
+	&.green-dark {
+		&:hover, &:active, &:focus {
+			color:darken($theme-color-3,10);
+		}
+	}
+	&.green-mid {
+		&:hover, &:active, &:focus {
+			color:darken($theme-color-4,10);
+		}
+	}
+	&.green-light {
+		&:hover, &:active, &:focus {
+			color:darken($theme-color-5,10);
+		}
+	}
+	&.green-lemon {
+		&:hover, &:active, &:focus {
+			color:darken($theme-color-6,10);
+		}
+	}
+	&.cream {
+		&:hover, &:active, &:focus {
+			color:darken($theme-color-7,10);
+		}
+	}
+}
+p {
+	a {
+		&:hover, &:active, &:focus {
+			text-decoration:underline;
+		}
+	}
+}
+input.text, textarea.textarea, .form-group select, .submit-button, .submit-link, .btn {
+	border:none;
+	@include border-radius(0);
+}
+input.text, textarea.textarea, .form-group select {
+	font-size:12px;
+	color:#000;
+	border:1px solid transparent;
+}
+input.text, .form-group select {
+	padding:8px 15px;
+	height:40px;
+}
+input.text, textarea.textarea {
+	text-align:center;
+}
+textarea.textarea {
+	min-height:100px;
+	padding-top:8px;
+}
+.form-group select {
+	color:#000;
+	option {
+		background-color:#FFF;
+		//color:#000;
+	}
+}
+.form-control {
+	color:#000;
+}
+.submit-button, .submit-link, .btn {
+	display:inline-block;
+	height:40px;
+	padding:9px 15px 8px;
+	font-size:15px;
+	background-color:$theme-color-2;
+	color:#000;
+	border:1px solid transparent;
+	letter-spacing:1px;
+	cursor:pointer;
+	outline:none;
+	@include border-radius(1.5em);
+	@include transition(all ease-out 0.2s);
+	i {
+		font-size:18px;
+		@include transition(none);
+	}
+	&:hover, &:active, &:focus {
+		background-color:lighten($theme-color-2,5);
+		color:#000;
+		border-color:transparent;
+		text-decoration:none;
+		outline:none;
+	}
+	&.btn-longer {
+		padding-right:40px;
+		padding-left:40px;
+	}
+	&.btn-lg {
+		height:56px;
+		padding:13px 57px 12px;
+		font-size:22px;
+		&.btn-longer {
+			padding-right:70px;
+			padding-left:70px;
+		}
+	}
+	&.btn-100 {
+		width:100%;
+	}
+	&.button-dark-grey {
+		background-color:$theme-color-1;
+		color:#FFF;
+		&:hover, &:active, &:focus {
+			background-color:lighten($theme-color-1,10);
+			color:#FFF;
+		}
+	}
+	&.button-light-grey {
+		background-color:$theme-color-2;
+		color:#000;
+		&:hover, &:active, &:focus {
+			background-color:lighten($theme-color-2,10);
+			color:#000;
+		}
+	}
+	&.button-green-dark {
+		background-color:$theme-color-3;
+		color:#FFF;
+		&:hover, &:active, &:focus {
+			background-color:lighten($theme-color-3,10);
+			color:#FFF;
+		}
+	}
+	&.button-green-mid {
+		background-color:$theme-color-4;
+		color:#FFF;
+		&:hover, &:active, &:focus {
+			background-color:lighten($theme-color-4,10);
+			color:#FFF;
+		}
+	}
+	&.button-green-light {
+		background-color:$theme-color-5;
+		color:#FFF;
+		&:hover, &:active, &:focus {
+			background-color:lighten($theme-color-5,10);
+			color:#FFF;
+		}
+	}
+	&.button-green-lemon {
+		background-color:$theme-color-6;
+		color:#FFF;
+		&:hover, &:active, &:focus {
+			background-color:lighten($theme-color-6,10);
+			color:#FFF;
+		}
+	}
+	&.button-cream {
+		background-color:$theme-color-7;
+		color:#FFF;
+		&:hover, &:active, &:focus {
+			background-color:lighten($theme-color-7,10);
+			color:#FFF;
+		}
+	}
+}
+
+// Extra Padding Styles
+.padtop20 {
+	padding-top:20px;
+}
+.padbottom20 {
+	padding-bottom:20px;
+}
+.padtop25 {
+	padding-top:25px;
+}
+.padbottom25 {
+	padding-bottom:25px;
+}
+.padtop30 {
+	padding-top:30px;
+}
+.padbottom30 {
+	padding-bottom:30px;
+}
+
+// Form Dark Border
+.form-dark-border {
+	::-webkit-input-placeholder {
+		color:lighten($theme-color-1,20)!important;
+		text-transform:uppercase;
+	}
+	:-moz-placeholder {
+		color:lighten($theme-color-1,20)!important;
+		text-transform:uppercase;
+	}
+	::-moz-placeholder {
+		color:lighten($theme-color-1,20)!important;
+		text-transform:uppercase;
+	}
+	:-ms-input-placeholder {
+		color:lighten($theme-color-1,20)!important;
+		text-transform:uppercase;
+	}
+	input.text, textarea.textarea, .form-group select {
+		background-color:transparent;
+		color:$theme-color-1;
+		border:1px solid $theme-color-1;
+		text-transform:none;
+	}
+	.form-control {
+		color:$theme-color-1;
+	}
+	.form-group select {
+		color:lighten($theme-color-1,20)!important;
+		option {
+			background-color:lighten($theme-color-2,20);
+			//color:$theme-color-1;
+		}
+	}
+}
+
+// Form Light Border
+.form-light-border {
+	::-webkit-input-placeholder {
+		color:#F1F1F1!important;
+		text-transform:uppercase;
+	}
+	:-moz-placeholder {
+		color:#F1F1F1!important;
+		text-transform:uppercase;
+	}
+	::-moz-placeholder {
+		color:#F1F1F1!important;
+		text-transform:uppercase;
+	}
+	:-ms-input-placeholder {
+		color:#F1F1F1!important;
+		text-transform:uppercase;
+	}
+	input.text, textarea.textarea, .form-group select {
+		background-color:transparent;
+		color:#CCC;
+		border:1px solid #FFF;
+		text-transform:none;
+	}
+	.form-control {
+		color:#CCC;
+	}
+	.form-group select {
+		color:#F1F1F1;
+		option {
+			background-color:$theme-color-2;
+			color:$theme-color-1;
+		}
+	}
+}
+
+// Form Grey Border
+.form-grey-border {
+	::-webkit-input-placeholder {
+		color:$theme-color-2!important;
+	}
+	:-moz-placeholder {
+		color:$theme-color-2!important;
+	}
+	::-moz-placeholder {
+		color:$theme-color-2!important;
+	}
+	:-ms-input-placeholder {
+		color:$theme-color-2!important;
+	}
+	input.text, textarea.textarea, .form-group select {
+		background-color:transparent;
+		color:$theme-color-2;
+		border:1px solid $theme-color-2;
+	}
+	.form-control {
+		color:$theme-color-2;
+	}
+	.form-group select {
+		color:$theme-color-2;
+		option {
+			background-color:$theme-color-2;
+			color:$theme-color-1;
+		}
+	}
+}
+
+// Form Sizes
+.form-lg {
+	input.text, textarea.textarea, .form-group select {
+		font-size:15px;
+		text-transform:uppercase;
+	}
+	input.text, .form-group select {
+		padding:15px;
+		height:53px;
+	}
+	textarea.textarea {
+		padding-top:15px;
+	}
+}
+
+// Form Alignment
+.form-center {
+	::-webkit-input-placeholder {
+		text-align:center;
+	}
+	:-moz-placeholder {
+		text-align:center;
+	}
+	::-moz-placeholder {
+		text-align:center;
+	}
+	:-ms-input-placeholder {
+		text-align:center;
+	}
+	input.text, textarea.textarea {
+		text-align:center;
+	}
+}
+
+// Main Container & Main
+.main-container {
+	.main {
+		text-align:center;
+		@include border-radius(0);
+	}
+}
+
+// Section
+section {
+	//background-color:#FFF;
+	text-align:center;
+}
+
+// Panels, Forms, Containers
+.panel-half-for-relative {
+  width:100%;
+  &.panel-left, &.panel-right {
+    padding:35px 25px 45px;
+  }
+}
+
+// Background Colours
+.bg-dark-grey {
+	background-color:$theme-color-1;
+}
+.bg-light-grey {
+	background-color:$theme-color-2;
+}
+.bg-green-dark {
+	background-color:$theme-color-3;
+}
+.bg-green-mid {
+	background-color:$theme-color-4;
+}
+.bg-green-light {
+	background-color:$theme-color-5;
+}
+.bg-green-lemon {
+	background-color:$theme-color-6;
+}
+.bg-cream {
+	background-color:$theme-color-7;
+}
+
+// Progress Bar Custom Unity
+.progress-bar-custom-unity {
+	margin-bottom:35px;
+	.progress {
+		height:20px;
+		margin-top:3px;
+		margin-bottom:0;
+		border:none;
+		@include border-radius(0.5em);
+		//@include box-shadow(none);
+		.progress-bar {
+			background-color:$theme-color-5;
+			@include box-shadow(none);
+		}
+	}
+	.bar-text, .bar-goal {
+		margin-top:3px;
+		//font-weight:bold;
+		font-size:13px;
+		color:$theme-color-1;
+		line-height:normal;
+	}
+	.bar-text {
+		float:left;
+		margin-left:8px;
+		color:#FFF;
+		text-align:left;
+	}
+	.bar-goal {
+		float:right;
+		margin-right:8px;
+		text-align:right;
+	}
+}
+
+// Progress Bar Custom Apart
+.progress-bar-custom-apart {
+	margin-bottom:18px;
+	.progress {
+		height:17px;
+		margin-top:3px;
+		margin-bottom:8px;
+		border:none;
+		@include border-radius(0.5em);
+		//@include box-shadow(none);
+		.progress-bar {
+			background-color:$theme-color-5;
+			@include box-shadow(none);
+		}
+	}
+	.bar-text, .bar-goal {
+		margin-top:3px;
+		//font-weight:bold;
+		font-size:13px;
+		color:$theme-color-1;
+		line-height:normal;
+	}
+	.bar-text {
+		float:left;
+		margin-left:4px;
+		text-align:left;
+	}
+	.bar-goal {
+		float:right;
+		margin-right:4px;
+		text-align:right;
+	}
+}
+
+//---------------------------------------------------//
+
+// Donation Page, Donation-v2 Page
+body.page-type-donation, body.page-type-donation-v2 {
+	.panel-half-for-relative {
+	  &.panel-left {
+	  	padding:15px 25px;
+	  	background-color:rgba(0,0,0,0.5);
+	  	color:rgba(255,255,255,0.7);
+	  }
+	  &.panel-right {
+	  	padding:25px;
+	  	background-color:#FFF;
+	  }
+	}
+	.lead {
+		margin-top:10px;
+		margin-bottom:23px;
+		font-size:17.5px;
+		text-transform:uppercase;
+		letter-spacing:1px;
+		text-align:center;
+	}
+	.monthly-or-one-off-donation {
+		padding-top:20px;
+		font-size:13px;
+		a {
+			color:$theme-color-5;
+			&:hover, &:active, &:focus {
+				color:$theme-color-6;
+			}
+		}
+	}
+}
+
+// Donation-v2 Page
+body.page-type-donation-v2 {
+	.donation-other-input-container {
+		.currency-symbol {
+			display:inline-block;
+			margin-right:7px;
+		}
+	}
+	.radio-inline {
+		span {
+			&:last-child {
+				label.radio {
+					margin-top:15px;//
+					padding-bottom:7px;
+					background-color:transparent;
+					color:$theme-color-1;
+					border:none;
+					&:hover, &:active, &:focus {
+						background-color:transparent;
+						color:$theme-color-1;
+					}
+				}
+			}
+		}
+		input[type="radio"]:checked+label {
+	    background-color:transparent!important;
+	    color:$theme-color-1!important;
+	    border-color:$theme-color-1!important;
+	  }
+	}
+	.donation-v2-occurence-radio {
+		.form-group {
+			> span {
+				float:left;
+				width:50%;
+				> input, > label {
+					display:inline-block;
+					//vertical-align:middle;
+				}
+				> input {
+					//margin-top:1px;
+					margin-right:5px;
+					@include transform(translateY(1px));
+				}
+			}
+		}
+	}
+}
