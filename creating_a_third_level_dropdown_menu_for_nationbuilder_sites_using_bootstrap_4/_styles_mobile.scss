@@ -1,0 +1,265 @@
+// Background Size Mixin
+@mixin background-size($size) {
+  -webkit-background-size:$size;
+     -moz-background-size:$size;
+      -ms-background-size:$size;
+       -o-background-size:$size;
+          background-size:$size;
+}
+
+// Border Radius Mixin
+@mixin border-radius($radius) {
+  -webkit-border-radius:$radius;
+     -moz-border-radius:$radius;
+      -ms-border-radius:$radius;
+       -o-border-radius:$radius;
+          border-radius:$radius;
+}
+
+// Border Top Right Radius Mixin (Corner)
+@mixin border-top-right-radius($top-right-radius) {
+  -webkit-border-top-right-radius:$top-right-radius;
+     -moz-border-top-right-radius:$top-right-radius;
+      -ms-border-top-right-radius:$top-right-radius;
+       -o-border-top-right-radius:$top-right-radius;
+          border-top-right-radius:$top-right-radius;
+}
+
+// Border Top Left Radius Mixin (Corner)
+@mixin border-top-left-radius($top-left-radius) {
+  -webkit-border-top-left-radius:$top-left-radius;
+     -moz-border-top-left-radius:$top-left-radius;
+      -ms-border-top-left-radius:$top-left-radius;
+       -o-border-top-left-radius:$top-left-radius;
+          border-top-left-radius:$top-left-radius;
+}
+
+// Border Bottom Right Radius Mixin (Corner)
+@mixin border-bottom-right-radius($bottom-right-radius) {
+  -webkit-border-bottom-right-radius:$bottom-right-radius;
+     -moz-border-bottom-right-radius:$bottom-right-radius;
+      -ms-border-bottom-right-radius:$bottom-right-radius;
+       -o-border-bottom-right-radius:$bottom-right-radius;
+          border-bottom-right-radius:$bottom-right-radius;
+}
+
+// Border Bottom Left Radius Mixin (Corner)
+@mixin border-bottom-left-radius($bottom-left-radius) {
+  -webkit-border-bottom-left-radius:$bottom-left-radius;
+     -moz-border-bottom-left-radius:$bottom-left-radius;
+      -ms-border-bottom-left-radius:$bottom-left-radius;
+       -o-border-bottom-left-radius:$bottom-left-radius;
+          border-bottom-left-radius:$bottom-left-radius;
+}
+
+// Transform Mixin
+@mixin transform($transform) {
+  -webkit-transform:$transform;
+     -moz-transform:$transform;
+      -ms-transform:$transform;
+       -o-transform:$transform;
+          transform:$transform;
+}
+
+// Transition Mixin
+@mixin transition($transition...) {
+  -webkit-transition:$transition;
+     -moz-transition:$transition;
+      -ms-transition:$transition;
+       -o-transition:$transition;
+          transition:$transition;
+}
+
+// Transition Delay Mixin
+@mixin transition-delay($delay) {
+  -webkit-transition:$delay;
+     -moz-transition:$delay;
+      -ms-transition:$delay;
+       -o-transition:$delay;
+          transition:$delay;
+}
+
+// Filter Mixin
+@mixin filter($filter...) {
+  -webkit-filter:$filter;
+     -moz-filter:$filter;
+      -ms-filter:$filter;
+       -o-filter:$filter;
+          filter:$filter;
+}
+
+// Box Shadow Mixin
+@mixin box-shadow($box-shadow...) {
+  -webkit-box-shadow:$box-shadow;
+     -moz-box-shadow:$box-shadow;
+      -ms-box-shadow:$box-shadow;
+       -o-box-shadow:$box-shadow;
+          box-shadow:$box-shadow;
+}
+
+// Text Shadow Mixin
+@mixin text-shadow($text-shadow...) {
+  -webkit-text-shadow:$text-shadow;
+     -moz-text-shadow:$text-shadow;
+      -ms-text-shadow:$text-shadow;
+       -o-text-shadow:$text-shadow;
+          text-shadow:$text-shadow;
+}
+
+// Animation Mixin
+@mixin animation($animation...) {
+  -webkit-animation:$animation;
+     -moz-animation:$animation;
+      -ms-animation:$animation;
+       -o-animation:$animation;
+          animation:$animation;
+}
+
+// Nav
+nav.navbar {
+  background-color:green!important;
+  .navbar-brand {
+    padding-left:5px;
+    img {
+      max-height:40px;
+    }
+  }
+  .navbar-toggler {
+    background-color:transparent;
+    border-color:transparent;
+    margin-right:5px;
+    outline:none;
+    &.collapsed {
+      background-color:transparent;
+      border-color:transparent;
+    }
+  }
+  #menu-collapse {
+  }
+  .navbar-nav {
+    margin-top:10px;
+    li.nav-item {
+      a.nav-link {
+        color:#F1F1F1;
+      }
+    }
+    > li.nav-item {
+      > a.nav-link {
+        //white-space:nowrap;
+      }
+    }
+    li.nav-item.active {
+      > a.nav-link {
+        &:hover, &:active, &:focus {
+        }
+      }
+    }
+    li.nav-item.dropdown.open {
+      a {
+      }
+    }
+    li.nav-item.dropdown, li.nav-item.dropdown.open {
+      div.dropdown-menu {
+        padding:0.3em 0;
+        background-color:transparent;
+        border:none;
+        @include box-shadow(none);
+        a.dropdown-item {
+          color:#F1F1F1;
+          &:hover, &:active, &:focus {
+            background:none;
+            background-color:transparent;
+            color:lighten(purple,10);
+          }
+        }
+        // DROPDOWN SUBMENU MOBILE (3TH LEVEL) [START]
+        ul.dropdown-item-ul {
+          padding-left:0;
+          li.dropdown-item-li {
+            list-style-type:none;
+            a {
+              font-size:17px;
+              background-color:green;
+              color:#F1F1F1!important;
+              border-bottom:1px solid lighten(green,5);
+              p {
+                @include transition(all ease-out 0.3s);
+              }
+              &:hover, &:active, &:focus {
+                background:transparent!important;//Was Gradient
+                background-color:lighten(green,5)!important;
+                color:lighten(purple,15)!important;
+                p {
+                  @include transform(translateX(0.3em));
+                }
+              }
+              &.active {
+                background:transparent;//Was Gradient
+                background-color:lighten(green,5);
+                color:lighten(purple,15);
+              }
+              // Styles [dropdown.scss] [START]
+              display: block;
+              width: 100%; // For `<button>`s
+              padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+              clear: both;
+              font-weight: $font-weight-normal;
+              color: $dropdown-link-color;
+              text-align: inherit; // For `<button>`s
+              white-space: nowrap; // prevent links from randomly breaking onto new lines
+              //background-color: transparent; // For `<button>`s
+              //border: 0; // For `<button>`s
+              @include hover-focus {
+                color: $dropdown-link-hover-color;
+                text-decoration: none;
+                @include gradient-bg($dropdown-link-hover-bg);
+              }
+              &.active,
+              &:active {
+                color: $dropdown-link-active-color;
+                text-decoration: none;
+                @include gradient-bg($dropdown-link-active-bg);
+              }
+              &.disabled,
+              &:disabled {
+                color: $dropdown-link-disabled-color;
+                background-color: transparent;
+                // Remove CSS gradients if they're enabled
+                @if $enable-gradients {
+                  background-image: none;
+                }
+              }
+              // Styles [dropdown.scss] [END]
+            }
+            .dropdown-submenu {
+              display:none;
+              position:relative;
+              background-color:lighten(green,5);
+              a.dropdown-submenu-item {
+                color:darken(#F1F1F1,3)!important;
+                border-bottom:none;
+                p {
+                  padding-left:25px;
+                  font-size:16px;
+                  white-space:normal;
+                }
+                &:hover, &:active, &:focus {
+                  color:lighten(purple,20)!important;
+                }
+                &:last-child {
+                  border-bottom:1px solid lighten(green,5);
+                }
+              }
+            }
+            &:hover, &:active, &:focus {
+              .dropdown-submenu {
+                display:block;
+              }
+            }
+          }
+        }
+        // DROPDOWN SUBMENU MOBILE (3TH LEVEL) [END]
+      }
+    }
+  }
+}

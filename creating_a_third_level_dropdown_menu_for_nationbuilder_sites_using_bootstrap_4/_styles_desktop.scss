@@ -1,0 +1,170 @@
+@include media-breakpoint-up(lg) {
+
+  // Nav
+  nav.navbar {
+    padding:0;
+    background-color:#FFF!important;
+    .navbar-brand {
+      padding:11px 0 14px 13px;
+      margin-right:0.8em;//Was 1rem
+      img {
+        max-height:57px;
+      }
+    }
+    @media only screen and (min-width:1300px) {
+      .navbar-brand {
+        margin-right:2em;//Was 1rem
+      }
+    }
+    .navbar-nav {
+      height:83px;
+      margin-top:0;
+      margin-right:-15px;
+      li.nav-item {
+        > a.nav-link, a.dropdown-item {
+          font-family:$font-headline;
+        }
+      }
+      > li.nav-item {
+        > a.nav-link {
+          padding:1.71em 1em 1.26em;
+          font-size:17px;
+          color:$dark;
+          white-space:nowrap;
+          border-bottom:7.1px solid transparent;
+          &:hover, &:active, &:focus {
+            color:$dark;
+            border-color:green;
+          }
+        }
+      }
+      li.nav-item.active {
+        > a.nav-link {
+          color:$dark;
+          border-color:green;
+          &:hover, &:active, &:focus {
+            color:$dark;
+            border-color:green;
+          }
+        }
+      }
+      > li.nav-item:last-child {
+        > a.nav-link {
+          margin-left:7px;
+          padding-right:1.8em;
+          padding-left:1.8em;
+          font-weight:lighter;
+          background-color:purple;
+          color:#FFF;
+          border-color:transparent;
+          @include border-radius(0);
+          &:hover, &:active, &:focus {
+            background-color:darken(purple,10);
+            color:#FFF;
+            border-color:transparent;
+          }
+        }
+      }
+      li.nav-item.dropdown {
+        > a.nav-link.dropdown-toggle {
+          &:after {//(caret)
+            position:absolute;//So it doesn't take space
+            margin-left:0.4em;//Was .255em
+            top:40px;
+            border-top:3px solid;
+            border-right:3px solid transparent;
+            border-bottom:0;
+            border-left:3px solid transparent;
+          }
+        }
+      }
+      li.nav-item.dropdown.open, li.nav-item.dropdown:hover {
+        div.dropdown-menu {
+          display:block;
+        }
+        > a.nav-link.dropdown-toggle {
+          color:$dark;
+          border-color:green;
+          &:hover, &:active, &:focus {
+            color:$dark;
+          }
+        }
+      }
+      li.nav-item.dropdown, li.nav-item.dropdown.open {
+        div.dropdown-menu {
+          min-width:200px;
+          margin-top:-8px;//Was .125rem
+          padding:0.5rem 0;
+          background-color:transparent;
+          @include border-radius(0);
+          @include border-bottom-right-radius(.25rem);
+          @include border-bottom-left-radius(.25rem);
+          z-index:1030;
+          a.dropdown-item {
+            font-size:17px;
+            background-color:green;
+            border-bottom:1px solid lighten(green,5);
+            p {
+              @include transition(all ease-out 0.3s);
+            }
+            &:hover, &:active, &:focus {
+              background-color:lighten(green,5);
+              color:#FFF;
+              p {
+                @include transform(translateX(0.3em));
+              }
+            }
+            &.active {
+              background:transparent;//Was Gradient
+              background-color:lighten(green,5);
+              color:#FFF;
+            }
+            &:last-child {
+              border-bottom:none;
+            }
+          }
+          // DROPDOWN SUBMENU (3TH LEVEL) [START]
+          ul.dropdown-item-ul {
+            li.dropdown-item-li {
+              position:relative;
+              a {
+                &:hover, &:active, &:focus {
+                  color:#FFF!important;
+                }
+                &.active {
+                  color:#FFF;
+                }
+              }
+              &:last-child {
+                > a {
+                  border-bottom:none!important;
+                }
+              }
+              .dropdown-submenu {
+                position:absolute;
+                width:250px;
+                top:0;
+                left:100%;
+                a.dropdown-submenu-item {
+                  border-bottom:1px solid lighten(green,5);
+                  p {
+                    padding-left:0;
+                    font-size:17px;
+                  }
+                  &:hover, &:active, &:focus {
+                    color:#FFF!important;
+                  }
+                  &:last-child {
+                    border-bottom:none!important;
+                  }
+                }
+              }
+            }
+          }
+          // DROPDOWN SUBMENU (3TH LEVEL) [END]
+        }
+      }
+    }
+  }
+
+}//@media
