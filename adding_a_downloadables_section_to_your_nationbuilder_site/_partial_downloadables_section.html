@@ -1,0 +1,125 @@
+{% assign posts_count = 0 %}
+{% assign ordered_children = page.nav_children %}
+
+{% assign downloadables_exist = "false" %}
+{% for child in ordered_children %}
+  {% if child.attachments.size > 0 %}
+    {% assign downloadables_exist = "true" %}
+  {% endif %}
+{% endfor %}
+
+{% if downloadables_exist == "true" %}
+<section class="downloadables-section clearfix">
+  <div class="container">
+
+    <h2 class="text-secondary text-bold pb-4 d-none d-md-block">{{ page.headline }}</h2>
+    <h3 class="text-secondary text-bold pb-3 d-block d-md-none">{{ page.headline }}</h3>
+
+    {% for child in ordered_children %}
+      {% assign pdf_link = "empty" %}
+
+      <!--Does child contains a PDF file?-->
+      <!--{% comment %}
+      {% for attachment in child.attachments %}
+        {% if attachment.content_type contains "pdf" %}
+          {% assign pdf_link = attachment.url %}
+        {% endif %}
+      {% endfor %}
+      {% endcomment %}-->
+      
+      <!--Does child contains a file attachment to use as the downloadable? (can be a JPG, PNG, or any attached file)-->
+      {% if child.attachments.size > 0 %}
+        {% assign pdf_link = child.attachments.first.url %}
+      {% endif %}
+      
+      <!--If child contains a file attachment to use as the downloadable-->
+      {% if pdf_link != "empty" %}
+        {% if posts_count == 0 %}
+        <div class="row">
+        {% endif %}
+          <div class="col-md-6">
+
+            <article class="mb-2 pb-4">
+              <!--(OPTIONAL) Enable this code to have an iframe of the PDF file, using the "does child contains a PDF file?" code above-->
+              <!--{% comment %}
+              <div class="intrinsic-container">
+                <iframe src="https://drive.google.com/viewerng/viewer?url={{ pdf_link }}&embedded=true"></iframe>
+              </div>
+              {% endcomment %}-->
+
+              <!--(OPTIONAL) Enable this code to search for an image to put within a squared container using the "Social Media" thumbnail image from each subpage. If a subpage doesn't have a meta image we will use a default "pdf-thumbnail-generic.jpg" that needs to be added into the main "theme" files-->
+              <!--{% comment %}
+              <style type="text/css">
+                #thumbnail-{{ child.slug }} {
+                  background:url('{% if child.has_meta_image? %}{{ child.meta_image_url }}{% else %}{{ theme['pdf-thumbnail-generic.jpg'] }}{% endif %}') no-repeat center center scroll;
+                  -webkit-background-size:cover;
+                  -moz-background-size:cover;
+                  -o-background-size:cover;
+                  background-size:cover;
+                }
+              </style>
+              <a href="{{ pdf_link }}" target="_blank">
+                <div id="thumbnail-{{ child.slug }}" style="height:250px;">
+                </div>
+              </a>
+              {% endcomment %}-->
+
+              <div class="row">
+                <div class="col-md-6">
+                  <a href="{{ pdf_link }}" target="_blank">
+                    <img src="{% if child.has_meta_image? %}{{ child.meta_image_url }}{% else %}{{ site.meta_image_url }}{% endif %}" alt="{% if child.has_meta_image? %}{{ child.name }}{% else %}{{ site.long_name }}{% endif %} Logo">
+                  </a>
+                </div>
+
+                <div class="col-md-6">
+                  {% if child.headline.size > 0 %}
+                    <a href="{{ pdf_link }}" target="_blank" class="text-black">
+                      <h3 class="pt-0 pb-2 d-none d-md-block">{{ child.headline }}</h3>
+                      <h4 class="pt-3 pb-2 d-block d-md-none">{{ child.headline }}</h4>
+                    </a>
+                  {% endif %}
+                  
+                  {% if child[child.type_slug].intro.size > 0 %}
+                    {{ child[child.type_slug].intro | strip_html | truncatewords:25 }}
+                  {% elsif child[child.type_slug].content.size > 0 %}
+                    {{ child[child.type_slug].content | strip_html | truncatewords:25 }}
+                  {% elsif child[child.type_slug].content_full.size > 0 %}
+                    {{ child[child.type_slug].content_full | strip_html | truncatewords:25 }}
+                  {% endif %}
+                  
+                  <div class="mt-md-4 mt-3">
+                    <a href="{{ pdf_link }}" target="_blank" download="download" class="btn btn-primary">Download</a>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+          </div>
+        {% assign posts_count = posts_count | plus:1 %}
+        {% if posts_count == 2 or forloop.last %}
+        </div>
+        {% assign posts_count = 0 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+  </div>
+</section>
+{% endif %}
+
+<style>
+  .intrinsic-container {
+    position: relative;
+    overflow: hidden;
+    height: 0;
+    padding-bottom:138%;
+  }
+  .intrinsic-container iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%!important;
+    height: 100%!important;
+  }
+</style>
