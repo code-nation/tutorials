@@ -1,0 +1,422 @@
+//----------Video Galleries & Video Sections----------//
+
+.videomodal-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2147483647;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -ms-touch-action: none;
+  touch-action: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-overflow-scrolling: touch;
+  -webkit-backface-visibility: hidden;
+  text-align: center;
+}
+
+.videomodal-overlay:before {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 1px;
+  margin-right: -1px;
+  vertical-align: middle;
+}
+
+[dir="rtl"] .videomodal-overlay:before {
+  margin-right: 0;
+  margin-left: -1px;
+}
+
+.videomodal-overlay, .preview-video, .preview_video {
+  ::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+  }
+
+  ::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+  }
+}
+
+.videomodal-container,
+.videomodal-ajax.videomodal-container,
+.videomodal-iframe,
+.videomodal-container-full {
+  margin: 0 auto;
+}
+
+.videomodal-container.fixed,
+.fixed.videomodal-iframe,
+.fixed .videomodal-container,
+.fixed .videomodal-iframe,
+.videomodal-container-full.fixed,
+.fixed .videomodal-container-full {
+  width: 100%;
+}
+
+.videomodal-container-full {
+  overflow-x: hidden;
+}
+
+.videomodal-container,
+.videomodal-ajax.videomodal-container,
+.videomodal-iframe {
+  max-width: 1140px;
+  width: calc(100% - 16px);
+}
+
+.videomodal-container.fixed,
+.fixed.videomodal-iframe,
+.fixed .videomodal-container,
+.fixed .videomodal-iframe {
+  width: 1140px;
+}
+
+.videomodal-overlay {
+  .media {
+    height: 0;
+    height: auto;
+    margin-bottom: 1rem;
+    max-width: 100%;
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+  }
+
+  .media.four-by-three {
+    padding-bottom: 75%;
+  }
+
+  .media.instagram {
+    height: auto;
+    max-width: none;
+    padding-bottom: 120%;
+  }
+
+  .media.vine {
+    height: auto;
+    max-width: none;
+    padding-bottom: 100%;
+  }
+
+  .media.getty {
+    height: auto;
+    padding-bottom: 79.9663%;
+  }
+
+  .media iframe,
+  .media object,
+  .media embed,
+  .media video {
+    background-color: transparent;
+    border: 0;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  .media img {
+    bottom: -1000000%;
+    left: -1000000%;
+    margin: auto;
+    position: absolute;
+    right: -1000000%;
+    top: -1000000%;
+    width: 100%;
+  }
+
+  .media.media-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.videomodal-loader:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  width: 25px;
+  height: 25px;
+  margin: auto;
+  content: "";
+  background-image: url(loadingiframe.gif);
+  background-size: contain; 
+  
+}
+
+.videomodal {
+  display: inline-block;
+  max-height: 95%;
+  max-width: 95%;
+  vertical-align: middle;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.videomodal-iframe,
+.videomodal-image {
+  overflow: hidden;
+}
+
+.videomodal-iframe .media,
+.videomodal-iframe iframe {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.videomodal-iframe .media {
+  background-color: #fff;
+  margin-bottom: 0;
+}
+
+.videomodal-iframe.iframe-full {
+  height: 95%;
+}
+
+.iframe-full .media {
+  height: 100%;
+  padding: 0;
+}
+
+.videomodal-image > img {
+  max-height: 100%;
+}
+
+.videomodal-content {
+  max-height: 100%;
+  overflow: auto;
+  padding: 1rem;
+  background-color: white;
+  text-align: left;
+}
+
+[dir="rtl"] .videomodal-content {
+  text-align: right;
+}
+
+.videomodal-header,
+.videomodal-footer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: #fff;
+}
+
+.videomodal-header {
+  padding: 0 4.555rem;
+  h2 {
+    margin-top: 20px;
+  }
+}
+
+.videomodal-footer {
+  top: auto;
+  bottom: 0;
+}
+
+.videomodal-close {
+  position: fixed;
+  top: 3%;
+  right: 3%;
+  z-index: 2;
+  display: inline-block;
+  padding: 1.245rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(0, 139, 139, 0);
+  cursor: pointer;
+  background: url(x.png) no-repeat;
+  height: 25px;
+  width: 25px;
+  &:focus{
+    outline: none;
+  }
+}
+
+[dir="rtl"] .videomodal-close {
+  right: auto;
+  left: 1px;
+}
+
+.videomodal-direction {
+  position: fixed;
+  top: 49%;
+  left: 0;
+  z-index: 2;
+  display: block;
+  width: 3rem;
+  padding: 1rem;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+[dir="rtl"] .videomodal-direction {
+  right: 0;
+}
+
+.videomodal-direction.next {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .videomodal-direction.next {
+  right: auto;
+  left: 0;
+}
+
+button.videomodal-close,
+button.videomodal-direction {
+  background-color: transparent;
+  border: none;
+}
+
+button.videomodal-close:hover,
+button.videomodal-direction:hover {
+  text-decoration: underline;
+}
+
+.fade-out,
+.fade-in {
+  -webkit-transition: opacity .3s;
+  transition: opacity .3s;
+}
+
+.fade-out {
+  opacity: 0 !important;
+}
+
+.fade-in {
+  opacity: 1 !important;
+}
+
+.videomodal-container,
+.videomodal-ajax.videomodal-container,
+.videomodal-iframe {
+  max-width: 100%;
+  width: 100%;
+}
+
+.videomodal-container.fixed,
+.fixed.videomodal-iframe,
+.fixed .videomodal-container,
+.fixed .videomodal-iframe {
+  width: 100%;
+}
+
+.videomodal:focus {
+  outline: none;
+}
+.visuallyhidden {
+  display: none;
+}
+
+//----------Effect Styles----------//
+
+// Transform Mixin
+@mixin transform($transform) {
+  -webkit-transform:$transform;
+     -moz-transform:$transform;
+      -ms-transform:$transform;
+       -o-transform:$transform;
+          transform:$transform;
+}
+
+// Transition Mixin
+@mixin transition($transition...) {
+  -webkit-transition:$transition;
+     -moz-transition:$transition;
+      -ms-transition:$transition;
+       -o-transition:$transition;
+          transition:$transition;
+}
+
+// Filter Mixin
+@mixin filter($filter...) {
+  -webkit-filter:$filter;
+     -moz-filter:$filter;
+      -ms-filter:$filter;
+       -o-filter:$filter;
+          filter:$filter;
+}
+
+// Box Shadow Mixin
+@mixin box-shadow($box-shadow...) {
+  -webkit-box-shadow:$box-shadow;
+     -moz-box-shadow:$box-shadow;
+      -ms-box-shadow:$box-shadow;
+       -o-box-shadow:$box-shadow;
+          box-shadow:$box-shadow;
+}
+
+.preview-video, .preview_video {
+  .fa.fa-play-circle {
+    width:50px!important;
+    height:50px!important;
+    font-size:50px!important;
+    opacity:1!important;
+    @include filter(opacity(0.6));
+    @include transition(all ease-out 0.5s);
+  }
+  &:hover, &:active, &:focus {
+    .fa.fa-play-circle {
+      @include filter(opacity(0.8));
+    }
+  }
+  .filter {
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-color:rgba(0,0,0,0.1);
+  }
+}
+
+.video-thumbnail {
+  height:250px!important;
+}
+
+@include media-breakpoint-up(md) {
+
+  .preview-video, .preview_video {
+    .fa.fa-play-circle {
+      width:90px!important;
+      height:90px!important;
+      font-size:90px!important;
+    }
+  }
+
+  .video-thumbnail {
+    height:310px!important;
+  }
+
+  a {
+    > .video-thumbnail {
+      @include transition(all ease-out 0.5s);
+    }
+    &:hover, &:active, &:focus {
+      > .video-thumbnail {
+        @include transform(scale(1.03));
+        @include box-shadow(0 5px 15px rgba(0,0,0,0.4));
+      }
+    }
+  }
+  
+}//@media

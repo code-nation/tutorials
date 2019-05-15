@@ -1,0 +1,104 @@
+<section class="video-gallery-section bg-white text-center py-md-5 py-3 clearfix">
+  <div class="container">
+    <h1 class="pb-4">{{ page.headline }}</h1>
+
+    <!--Video Gallery With "background-image(s)"-->
+    {% assign posts_count = 0 %}
+    {% assign ordered_children = page.children | sort:'published_at' | reverse %}
+
+    {% for child in ordered_children %}
+
+      {% assign child_content_escaped = child.basic.content | escape %}
+      {% capture video_id %}{% if child_content_escaped contains 'https://vimeo.com/' %}{{ child.basic.content | escape | split:'https://vimeo.com/' | last | split:'&' | first }}{% elsif child_content_escaped contains 'www.youtube.com%2Fembed%2F' %}{{ child.basic.content | escape | split:'www.youtube.com%2Fembed%2F' | last | split:'%3Fwmode' | first }}{% endif %}{% endcapture %}
+
+      {% assign child_tags_list = "#" %}
+      {% for tag in child.tags %}
+      {% assign child_tags_list = "#" | append:tag.slug | append:child_tags_list %}
+      {% endfor %}
+
+      {% if video_id.size > 0 %}
+        {% if child_content_escaped contains 'https://vimeo.com/' or child_content_escaped contains 'www.youtube.com%2Fembed%2F' %}
+
+          {% if posts_count == 0 %}
+          <div class="row">
+          {% endif %}
+            <div class="col-md-6 mt-2 mb-2">
+
+              <div class="preview-video" style="position:relative; width:100%;">
+                <a class="text-black" href="{% if child_content_escaped contains 'https://vimeo.com/' %}//player.vimeo.com/video/{{ video_id }}{% elsif child_content_escaped contains 'www.youtube.com%2Fembed%2F' %}//www.youtube.com/embed/{{ video_id }}{% endif %}" data-videomodal-title="{{ child.headline }}">
+                  {% if child.has_meta_image? %}
+                    <style type="text/css">
+                      #video-thumbnail-{{ child.slug }} {
+                        background:url('{{ child.meta_image_url }}') no-repeat center center scroll;
+                        -webkit-background-size:cover;
+                        -moz-background-size:cover;
+                        -o-background-size:cover;
+                        background-size:cover;
+                      }
+                    </style>
+                  {% else %}
+                    <style type="text/css">
+                      #video-thumbnail-{{ child.slug }} {
+                        background:url('{% if child_content_escaped contains "www.youtube.com%2Fembed%2F" %}https://img.youtube.com/vi/{{ video_id }}/{% if child_tags_list contains "#max_resolution#" %}maxresdefault.jpg{% else %}mqdefault.jpg{% endif %}{% endif %}') no-repeat center center scroll;
+                        -webkit-background-size:cover;
+                        -moz-background-size:cover;
+                        -o-background-size:cover;
+                        background-size:cover;
+                      }
+                    </style>
+                    {% if child_content_escaped contains 'https://vimeo.com/' %}
+                      <script type="text/javascript">
+                        $(function(){
+                          $.get('http://vimeo.com/api/v2/video/{{ video_id }}.json', function(data){
+                            //console.log(data[0]['thumbnail_large']);
+                            $('#video-thumbnail-{{ child.slug }}').prop('src',data[0]['thumbnail_large']);
+                          });
+                        });
+                      </script>
+                    {% endif %}
+                  {% endif %}
+
+                  <div class="video-thumbnail" id="video-thumbnail-{{ child.slug }}" style="position:relative; height:300px;">
+                    <div class="filter">
+                    </div>
+                    <i class="fa fa-play-circle" aria-hidden="true"></i>
+                  </div>
+              
+                  {% if child.headline.size > 0 %}
+                    <div class="pt-4">
+                      <h4>{{ child.headline }}</h4>
+                    </div>
+                  {% endif %}
+                </a>
+              </div>
+
+            </div>
+          {% assign posts_count = posts_count | plus:1 %}
+          {% if posts_count == 2 or forloop.last %}
+          </div>
+          {% assign posts_count = 0 %}
+          {% endif %}
+
+        {% endif %}
+      {% endif %}
+
+    {% endfor %}
+  </div>
+</section>
+
+<style type="text/css">
+  .fa-play-circle {
+    position:absolute;
+    width:50px;
+    height:50px;
+    margin:auto;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    font-size:50px;
+    color:#E1E1E1;
+    opacity:0.7;
+    z-index:999;
+  }
+</style>
